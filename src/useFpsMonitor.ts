@@ -1,5 +1,5 @@
 import { FPSMonitor } from "./fpsMonitor";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 
 export interface DynamicRenderingProps {
@@ -13,9 +13,9 @@ const defaultLODs = [
   'low',
 ];
 export default function useDynamicRendering({
-  customLODs,
-  updateInterval,
-  minFpsThreshold,
+  customLODs = defaultLODs,
+  updateInterval = 1000,
+  minFpsThreshold = 30,
 }: DynamicRenderingProps = {
   customLODs: defaultLODs,
   updateInterval: 1000,
@@ -23,23 +23,24 @@ export default function useDynamicRendering({
 }) {
 
   const [levelOfDetail, setLOD] = useState('');
+  const currLodIndexRef = useRef(-1);
 
+  const resetLOD = () => {
+    currLodIndexRef.current = -1;
+  };
 
   useEffect(() => {
-    let currLodIndex: number = -1;
-
-
-    const possibleLODs = customLODs ?? defaultLODs;
+    const possibleLODs = customLODs;
 
     const packageClass = new FPSMonitor();
     (window as any).pc = packageClass;
 
     const checkFPS = () => {
-      const fps = packageClass.getFPS(); // Replace with your actual method
+      const fps = packageClass.getFPS();
       if (fps < minFpsThreshold) {
-        currLodIndex = Math.min(possibleLODs.length - 1, currLodIndex + 1);
+        currLodIndexRef.current = Math.min(possibleLODs.length - 1, currLodIndexRef.current + 1);
+        setLOD(possibleLODs[currLodIndexRef.current]);
       }
-      setLOD(possibleLODs[currLodIndex]);
     };
 
     const fpsCheckInterval = setInterval(checkFPS, updateInterval ?? 1000);
@@ -49,5 +50,8 @@ export default function useDynamicRendering({
     };
   }, []);
 
-  return levelOfDetail;
+  return {
+    levelOfDetail,
+    resetLOD
+  };
 }
