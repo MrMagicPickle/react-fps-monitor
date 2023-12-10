@@ -2,7 +2,7 @@ import { FPSMonitor } from "./fpsMonitor";
 import { useState, useEffect, useRef } from "react";
 
 
-export interface DynamicRenderingProps {
+export interface FPSMonitorProps {
   levelOfDetails?: string[];
   updateInterval: number;
   minFpsThreshold: number;
@@ -13,11 +13,11 @@ const defaultLODs = [
   'low',
 ];
 
-export default function useDynamicRendering({
+export default function useFpsMonitor({
   levelOfDetails = defaultLODs,
   updateInterval = 1000,
   minFpsThreshold = 30,
-}: DynamicRenderingProps = {
+}: FPSMonitorProps = {
   levelOfDetails: defaultLODs,
   updateInterval: 1000,
   minFpsThreshold: 30,

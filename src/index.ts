@@ -1,2 +1,2 @@
 export * from './fpsMonitor';
-export { default as useDynamicRendering } from './useFpsMonitor';
+export { default as useFpsMonitor } from './useFpsMonitor';
