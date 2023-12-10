@@ -22,7 +22,6 @@ export default function useFpsMonitor({
   updateInterval: 1000,
   minFpsThreshold: 30,
 }) {
-
   const [levelOfDetail, setLOD] = useState('');
   const currLodIndexRef = useRef(0);
 
@@ -33,6 +32,18 @@ export default function useFpsMonitor({
 
   useEffect(() => {
     const packageClass = new FPSMonitor();
+
+    /* Handle Tab outs */
+    const handleVisibilityChange = () => {
+      if (!packageClass) {
+        return;
+      }
+
+      if (document.hidden) {
+        packageClass.resetFpsMonitor();
+      }
+    }
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     const checkFPS = () => {
       const fps = packageClass.getFPS();
@@ -47,6 +58,7 @@ export default function useFpsMonitor({
 
     return () => {
       clearInterval(fpsCheckInterval);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, []);
 

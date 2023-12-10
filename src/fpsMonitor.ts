@@ -1,32 +1,35 @@
 export class FPSMonitor {
-  private fps: number;
+  private fps: number = 60;
+  private frameCount: number = 0;
+  private lastTimestamp: number | undefined = undefined;
 
   constructor() {
-    this.fps = 60;
     this.initCalculateFPS();
   }
 
   private initCalculateFPS() {
-    let lastTimestamp: number;
-    let frameCount = 0;
-
     const updateFPS = (timestamp: number) => {
-      if (!lastTimestamp) {
-        lastTimestamp = timestamp;
+      if (!this.lastTimestamp) {
+        this.lastTimestamp = timestamp;
       }
 
-      const elapsed = timestamp - lastTimestamp;
-      frameCount++;
+      const elapsed = timestamp - this.lastTimestamp;
+      this.frameCount++;
 
       // Update FPS every second
       if (elapsed >= 1000) {
-        this.fps = Number((frameCount / (elapsed / 1000)).toFixed(2));
-        frameCount = 0;
-        lastTimestamp = timestamp;
+        this.fps = Number((this.frameCount / (elapsed / 1000)).toFixed(2));
+        this.frameCount = 0;
+        this.lastTimestamp = timestamp;
       }
       requestAnimationFrame(updateFPS);
     }
     requestAnimationFrame(updateFPS);
+  }
+
+  public resetFpsMonitor() {
+    this.lastTimestamp = undefined;
+    this.frameCount = 0;
   }
 
   public getFPS() {
