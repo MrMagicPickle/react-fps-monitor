@@ -22,7 +22,7 @@ export default function useFpsMonitor({
   updateInterval: 1000,
   minFpsThreshold: 30,
 }) {
-  const [levelOfDetail, setLOD] = useState('');
+  const [levelOfDetail, setLOD] = useState(defaultLODs[0]);
   const currLodIndexRef = useRef(0);
 
   const resetLOD = () => {
