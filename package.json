@@ -1,5 +1,5 @@
 {
-  "name": "dynamic-webgl-detail",
+  "name": "react-fps-monitor",
   "version": "1.0.0",
   "description": "",
   "main": "./build/index.js",
