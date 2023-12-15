@@ -1,6 +1,6 @@
 {
   "name": "react-fps-monitor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "./build/index.js",
   "scripts": {
@@ -15,5 +15,19 @@
   },
   "peerDependencies": {
     "react": ">=16.8.1"
-  }
+  },
+  "keywords": [
+    "react",
+    "fps",
+    "monitor",
+    "dynamic",
+    "rendering",
+    "performance",
+    "optimization",
+    "r3f",
+    "webgl",
+    "threejs",
+    "three",
+    "hook"
+  ]
 }
