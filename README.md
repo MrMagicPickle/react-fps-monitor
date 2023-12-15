@@ -1,10 +1,12 @@
 # Overview
 `react-fps-monitor` is a lightweight npm package designed for React applications that empowers developers to dynamically adjust rendering quality based on the frames-per-second (FPS) performance of the user's device.
 
+The main use of this package is to allow developers the option to render lower quality graphics to users with weaker devices, while still being able to render high quality graphics to users with stronger devices.
+
 # Features
 - Monitor FPS performance within your React application.
-- Emit detail level signals ('high' or 'low') based on configurable FPS thresholds.
-- Enable dynamic rendering adjustments to ensure optimal performance across different hardware capabilities.
+- Emit level of detail signals ('high' or 'low') based on configurable FPS thresholds.
+- Allows you to dynamically adjust render quality for better accessibility to your web application.
 - Ideal for React applications, particularly beneficial when used with r3f (React Three Fiber) for dynamic scene rendering.
 
 # Usage:
@@ -94,7 +96,7 @@ export default App;
 ## Resetting the level of detail
 You can utilize the `resetLOD` function available from the useFpsMonitor hook to manually reset the Level of Detail whenever necessary within your components.
 
-By calling `resetLOD`, you can reset the Level of Detail to its initial state, allowing you to dynamically adapt rendering quality based on updated FPS performance.
+By calling `resetLOD`, you can reset the Level of Detail to its initial state, which may be useful when you'd like to load in a new scene with the highest level of detail.
 
 
 # Parameters
