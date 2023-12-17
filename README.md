@@ -3,6 +3,8 @@
 
 The main use of this package is to allow developers the option to render lower quality graphics to users with weaker devices, while still being able to render high quality graphics to users with stronger devices.
 
+![Demo](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYWhrYzgxNnpmb2R5bHJvbGdiMmk1cXFxNWt2cjMzcnhranJ0dWtxeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9LZ1diYo1jgora3u7j/giphy.gif)
+
 # Features
 - Monitor FPS performance within your React application.
 - Emit level of detail signals ('high' or 'low') based on configurable FPS thresholds.
