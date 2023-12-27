@@ -7,7 +7,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
-  "author": "",
+  "author": "mrmagicpickle",
+  "bugs": {
+    "url": "https://github.com/MrMagicPickle/react-fps-monitor/issues"
+  },
+  "homepage": "https://github.com/MrMagicPickle/react-fps-monitor#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrMagicPickle/react-fps-monitor.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/react": "18.2.31",
